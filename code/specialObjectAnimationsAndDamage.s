@@ -501,13 +501,9 @@ linkUpdateDamageToApplyForRings:
 	cp GREEN_RING			; $4684
 	jr z,@greenRing			; $4686
 
-	cp CURSED_RING			; $4688
 	ret nz			; $468a
 
-; Cursed ring: damage *= 2
-	ld a,b			; $468b
-	add a			; $468c
-	jr @writeDamageToApply		; $468d
+
 
 ; Blue ring: damage /= 2
 @blueRing:
@@ -534,6 +530,8 @@ linkUpdateDamageToApplyForRings:
 	add b			; $46a3
 
 @writeDamageToApply:
+	ld a,b			; $468b
+	add a			; $468c
 	bit 7,a			; $46a4
 	jr nz,+			; $46a6
 	ld a,$ff		; $46a8
