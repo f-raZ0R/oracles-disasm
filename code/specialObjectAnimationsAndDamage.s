@@ -478,6 +478,8 @@ linkUpdateDamageToApplyForRings:
 	ld a,(de)		; $466a
 	or a			; $466b
 	ret z			; $466c
+	ld a,b			; $468b
+	add a			; $468c
 
 	ld b,a			; $466d
 	ld hl,@ringDamageModifierTable		; $466e
@@ -530,8 +532,6 @@ linkUpdateDamageToApplyForRings:
 	add b			; $46a3
 
 @writeDamageToApply:
-	ld a,b			; $468b
-	add a			; $468c
 	bit 7,a			; $46a4
 	jr nz,+			; $46a6
 	ld a,$ff		; $46a8
