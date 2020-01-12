@@ -32,7 +32,7 @@
 	; state.
 	LINK_STATE_FORCE_MOVEMENT		db ; $0b
 
-	; Plays the boss death sound effect?
+	; Plays the boss death sound effect, because they use the same sound.
 	LINK_STATE_GRABBED_BY_WALLMASTER	db ; $0c
 
 	; Grabbed by Likelike, Gohma (seasons), Veran spider form (ages)
