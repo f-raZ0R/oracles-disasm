@@ -1,4 +1,4 @@
-; Main file for Oracle of Ages, US version
+﻿; Main file for Oracle of Ages, US version
 
 .include "include/rominfo.s"
 .include "include/emptyfill.s"
@@ -50647,12 +50647,17 @@ _itemCalculateSwordDamage:
 
 @noRingModifier:
 	ld a,e			; $6250
+ld a,b			; $626c
+	cpl			; $626d
+	inc a			; $626e
+	sra a			; $626f
+	cpl			; $6271
+	inc a			; $6272
 	cp RED_RING			; $6251
 	jr z,@redRing		; $6253
 	cp GREEN_RING			; $6255
 	jr z,@greenRing		; $6257
-	cp CURSED_RING			; $6259
-	jr z,@cursedRing	; $625b
+	
 
 	ld a,b			; $625d
 	jr @setDamage		; $625e
@@ -50670,14 +50675,7 @@ _itemCalculateSwordDamage:
 	inc a			; $6269
 	jr @applyDamageModifier		; $626a
 
-@cursedRing:
-	ld a,b			; $626c
-	cpl			; $626d
-	inc a			; $626e
-	sra a			; $626f
-	cpl			; $6271
-	inc a			; $6272
-	jr @setDamage		; $6273
+
 
 @foundRingModifier:
 	ld a,(hl)		; $6275
